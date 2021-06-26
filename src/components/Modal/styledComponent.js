@@ -17,6 +17,16 @@ export const ModalWrapper = styled.div`
   border-radius: 20px;
   position: absolute;
   z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 2px solid black;
+
+  /* */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const ModalStatisticBlock = styled.div`
@@ -28,6 +38,8 @@ export const ModalRow = styled.div`
 `;
 
 export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
 `;
 
@@ -38,12 +50,12 @@ export const ModalTitle = styled.h1`
   color: ${prop("fontColor", "#000000")};
 `;
 
-// export const Background = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.5);
-//   position: fixed;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+export const ModalRowImage = styled.img``;
+
+export const TotalText = styled.span`
+  font-size: 24px;
+  line-height: 28px;
+  color: #666666;
+`;
+
+export const QuantityText = styled(TotalText)``;

@@ -1,20 +1,22 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { If, Then, Else } from "react-if";
 import { useEffect } from "react";
 import { createStructuredSelector } from "reselect";
 
 import "./App.css";
-import { Header, Table, Loader } from "./components";
+import { Header, Table, Loader, Modal } from "./components";
 import {
   selectorGetCountries,
   selectorGetIsLoading,
   selectorGetModalIsOpen,
 } from "./selectors";
 import { actionGetCountriesRequest, actionSetModalIsOpen } from "./actions";
-import { Modal } from "./components/Modal";
+import { filterCountries } from "./utils";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +37,6 @@ function App() {
   }, [dispatch]);
 
   const closeModal = useCallback(() => {
-    console.log("WORK");
     dispatch(actionSetModalIsOpen(false));
   }, [dispatch]);
 
@@ -52,19 +53,27 @@ function App() {
     [closeModal]
   );
 
+  const handleOnChange = useCallback((e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  }, []);
+
+  const filteredCountries = filterCountries(countries, searchTerm);
+
+  console.log(searchTerm);
+
   return (
     <div className="App">
-      <Header />
+      <Header onChange={handleOnChange} />
       <If condition={isLoading}>
         <Then>
           <Loader />
         </Then>
         <Else>
-          <Table countries={countries} openModal={handleOpenModal} />
+          <Table countries={filteredCountries} openModal={handleOpenModal} />
         </Else>
       </If>
       <Modal
-        isOpen={isOpen}
+        isOpen={!isOpen}
         handleKeyDownClose={handleKeyDownClose}
         closeModal={closeModal}
       />

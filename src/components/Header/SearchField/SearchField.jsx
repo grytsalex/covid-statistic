@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 import {
   SearchButton,
   SearchFieldWrapper,
@@ -6,13 +6,7 @@ import {
 } from "./styledComponent";
 import img from "../../../assets/search.svg";
 
-export const SearchField = () => {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    console.log(event.target.value);
-  };
-
+export const SearchField = memo(({ onChange }) => {
   const inputRef = useRef(null);
   const onInputFocus = () => {
     inputRef.current.focus();
@@ -25,10 +19,9 @@ export const SearchField = () => {
         placeholder="search..."
         type="text"
         ref={inputRef}
-        onChange={handleChange}
-        value={searchTerm}
+        onChange={onChange}
       />
       <SearchButton icon={img} onClick={onInputFocus} />
     </SearchFieldWrapper>
   );
-};
+});

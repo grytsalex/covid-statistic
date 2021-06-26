@@ -1,2 +1,2 @@
 export { httpGet } from "./request";
-export { columnSort } from "./utils";
+export { columnSort, matchIcons, filterCountries } from "./utils";

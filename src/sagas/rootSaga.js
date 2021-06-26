@@ -13,6 +13,7 @@ export function* handleGetCountriesRequest() {
     const { Countries } = yield httpGet(DEFAULT_URL + SUMMARY_PARAM).then(
       (res) => res
     );
+
     yield put(actionSetCountriesRequest(Countries));
   } catch (e) {
     console.log(e);

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 import { When } from "react-if";
 import { Scrollbars } from "react-custom-scrollbars";
@@ -29,8 +29,7 @@ export const Table = memo(({ countries, openModal }) => {
       //Todo how to not send callback for key №
       if (key === "№") return;
 
-      const copyData = countries.concat();
-      const sortedData = copyData.sort((a, b) =>
+      const sortedData = countries.sort((a, b) =>
         columnSort(a[key], b[key], sortDirection)
       );
       setSortCountries(sortedData);
@@ -38,6 +37,10 @@ export const Table = memo(({ countries, openModal }) => {
     },
     [countries, sortDirection]
   );
+
+  useEffect(() => {
+    setSortCountries(countries);
+  }, [countries]);
 
   return (
     <TableWrapper>
