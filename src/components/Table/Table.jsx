@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { isEmpty } from "lodash";
 import { When } from "react-if";
 import { Scrollbars } from "react-custom-scrollbars";
@@ -6,6 +6,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { Row } from "./Row";
 import { tableHeaderText } from "../../consts";
 import { TableWrapper } from "./styledComponent";
+import { columnSort } from "../../utils";
 
 const renderThumb = ({ style, ...props }) => {
   const thumbStyle = {
@@ -19,13 +20,32 @@ const CustomScrollbars = (props) => (
   <Scrollbars renderThumbVertical={renderThumb} {...props} />
 );
 
-export const Table = memo(({ countries }) => {
+export const Table = memo(({ countries, openModal }) => {
+  const [sortDirection, setSortDirection] = useState(false);
+  const [sortedCountries, setSortCountries] = useState(countries);
+
+  const handleSortData = useCallback(
+    (key) => {
+      //Todo how to not send callback for key №
+      if (key === "№") return;
+
+      const copyData = countries.concat();
+      const sortedData = copyData.sort((a, b) =>
+        columnSort(a[key], b[key], sortDirection)
+      );
+      setSortCountries(sortedData);
+      setSortDirection(!sortDirection);
+    },
+    [countries, sortDirection]
+  );
+
   return (
     <TableWrapper>
       <Row
         serialNumber={tableHeaderText.serialNumberTitle}
         countryName={tableHeaderText.countryTitle}
         totalConfirmed={tableHeaderText.totalConfirmedTitle}
+        sortData={handleSortData}
         tableHead
       />
       <When condition={!isEmpty(countries)}>
@@ -35,12 +55,13 @@ export const Table = memo(({ countries }) => {
           autoHideDuration={200}
           style={{ width: "inherit", height: `calc(100vh - 340px)` }}
         >
-          {countries?.map(({ Country, TotalConfirmed, ID }, index) => (
+          {sortedCountries?.map(({ Country, TotalConfirmed, ID }, index) => (
             <Row
               serialNumber={index + 1}
               countryName={Country}
               totalConfirmed={TotalConfirmed}
               key={ID}
+              openModal={openModal}
             />
           ))}
         </CustomScrollbars>

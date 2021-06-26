@@ -2,6 +2,7 @@ import {
   SET_IS_LOADING,
   GET_COUNTRIES_REQUEST,
   SET_COUNTRIES_REQUEST,
+  SET_MODAL_IS_OPEN,
 } from "./consts";
 
 export const actionSetIsLoading = (payload) => ({
@@ -9,12 +10,16 @@ export const actionSetIsLoading = (payload) => ({
   payload,
 });
 
-export const actionGetCountriesRequest = (payload) => ({
+export const actionGetCountriesRequest = () => ({
   type: GET_COUNTRIES_REQUEST,
-  payload,
 });
 
 export const actionSetCountriesRequest = (payload) => ({
   type: SET_COUNTRIES_REQUEST,
+  payload,
+});
+
+export const actionSetModalIsOpen = (payload) => ({
+  type: SET_MODAL_IS_OPEN,
   payload,
 });

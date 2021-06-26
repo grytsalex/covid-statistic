@@ -3,7 +3,7 @@ import {
   SearchButton,
   SearchFieldWrapper,
   SearchInput,
-} from "./styledComponents";
+} from "./styledComponent";
 import img from "../../../assets/search.svg";
 
 export const SearchField = () => {

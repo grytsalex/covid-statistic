@@ -49,4 +49,5 @@ export const TableText = styled.span`
   font-size: 24px;
   line-height: 28px;
   font-weight: 700;
+  cursor: pointer;
 `;
