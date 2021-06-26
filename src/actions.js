@@ -1,16 +1,20 @@
-import { IS_LOADING_SET, GET_COUNTRIES_REQUEST, SET_COUNTRIES_REQUEST } from './consts';
+import {
+  SET_IS_LOADING,
+  GET_COUNTRIES_REQUEST,
+  SET_COUNTRIES_REQUEST,
+} from "./consts";
 
-export const actionIsLoadingSet = payload => ({
-    type: IS_LOADING_SET,
-    payload,
+export const actionSetIsLoading = (payload) => ({
+  type: SET_IS_LOADING,
+  payload,
 });
 
-export const actionGetCountriesRequest = payload => ({
-    type: GET_COUNTRIES_REQUEST,
-    payload
-})
+export const actionGetCountriesRequest = (payload) => ({
+  type: GET_COUNTRIES_REQUEST,
+  payload,
+});
 
-export const actionSetCountriesRequest = payload => ({
-    type: SET_COUNTRIES_REQUEST,
-    payload
-})
+export const actionSetCountriesRequest = (payload) => ({
+  type: SET_COUNTRIES_REQUEST,
+  payload,
+});
