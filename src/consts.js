@@ -10,8 +10,17 @@ export const DEFAULT_URL = "https://api.covid19api.com/";
 export const SUMMARY_PARAM = "summary";
 
 // table header text
-export const tableHeaderText = {
-  serialNumberTitle: "№",
-  countryTitle: "Country",
-  totalConfirmedTitle: "Total Confirmed",
+export const tableHeaderCells = {
+  serialNumber: {
+    text: "№",
+    isSorted: false,
+  },
+  country: {
+    text: "Country",
+    isSorted: "true",
+  },
+  totalConfirmed: {
+    text: "Total Confirmed",
+    isSorted: true,
+  },
 };

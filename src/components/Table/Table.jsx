@@ -4,7 +4,7 @@ import { When } from "react-if";
 import { Scrollbars } from "react-custom-scrollbars";
 
 import { Row } from "./Row";
-import { tableHeaderText } from "../../consts";
+import { tableHeaderCells } from "../../consts";
 import { TableWrapper } from "./styledComponent";
 import { columnSort } from "../../utils";
 
@@ -26,9 +26,6 @@ export const Table = memo(({ countries, openModal }) => {
 
   const handleSortData = useCallback(
     (key) => {
-      //Todo how to not send callback for key №
-      if (key === "№") return;
-
       const sortedData = countries.sort((a, b) =>
         columnSort(a[key], b[key], sortDirection)
       );
@@ -44,13 +41,7 @@ export const Table = memo(({ countries, openModal }) => {
 
   return (
     <TableWrapper>
-      <Row
-        serialNumber={tableHeaderText.serialNumberTitle}
-        countryName={tableHeaderText.countryTitle}
-        totalConfirmed={tableHeaderText.totalConfirmedTitle}
-        sortData={handleSortData}
-        tableHead
-      />
+      <Row tableData={tableHeaderCells} sortData={handleSortData} tableHead />
       <When condition={!isEmpty(countries)}>
         <CustomScrollbars
           autoHide
@@ -60,9 +51,17 @@ export const Table = memo(({ countries, openModal }) => {
         >
           {sortedCountries?.map(({ Country, TotalConfirmed, ID }, index) => (
             <Row
-              serialNumber={index + 1}
-              countryName={Country}
-              totalConfirmed={TotalConfirmed}
+              tableData={{
+                serialNumber: {
+                  text: `${index + 1}`,
+                },
+                country: {
+                  text: Country,
+                },
+                totalConfirmed: {
+                  text: TotalConfirmed,
+                },
+              }}
               key={ID}
               openModal={() => openModal(Country)}
             />

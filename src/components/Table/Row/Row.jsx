@@ -5,14 +5,19 @@ import { RowItem } from "./RowItem";
 export const Row = memo(
   ({
     tableHead = false,
-    sortData = () => {},
     openModal = () => {},
-    ...rest
+    sortData = () => {},
+    tableData = {},
   }) => {
     return (
       <TableRow tableHead={tableHead} onClick={() => openModal()}>
-        {Object.values(rest).map((item, index) => (
-          <RowItem text={item} key={index} sortData={sortData} />
+        {/*<If condition={tableHead}*/}
+        {Object.values(tableData).map(({ text, isSorted }, index) => (
+          <RowItem
+            text={text}
+            key={index}
+            sortData={isSorted ? sortData : undefined}
+          />
         ))}
       </TableRow>
     );

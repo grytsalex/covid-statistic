@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import { TableRowItem, TableText } from "./styledComponent";
 
-export const RowItem = memo(({ text, sortData }) => {
+export const RowItem = memo(({ text, sortData = () => {} }) => {
   return (
     <TableRowItem>
-      <TableText onClick={() => sortData(text?.replace(/ /g, ""))}>
+      <TableText onClick={() => sortData(text.toString()?.replace(/ /g, ""))}>
         {text}
       </TableText>
     </TableRowItem>
