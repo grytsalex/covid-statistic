@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef } from "react";
+import { useSelector, shallowEqual } from "react-redux";
 import { When } from "react-if";
 import { useSpring, animated } from "react-spring";
 
@@ -15,66 +16,63 @@ import {
   Overlay,
 } from "./styledComponent";
 import { Portal } from "./Portal";
-import { matchIcons, useOnClickOutside } from "../../utils";
+import { matchRowData, useOnClickOutside } from "../../utils";
+import { selectorGetCurrentCountryData } from "../../selectors";
 
-export const Modal = memo(
-  ({ isOpen, title = "Modal Header", handleKeyDownClose, closeModal }) => {
-    const animation = useSpring({
-      config: {
-        duration: 250,
-      },
-      opacity: isOpen ? 1 : 0,
-      transform: isOpen ? `translateY(100%)` : `translateY(0%)`,
-    });
+export const Modal = memo(({ isOpen, closeModal }) => {
+  const animation = useSpring({
+    config: {
+      duration: 250,
+    },
+    opacity: isOpen ? 1 : 0,
+    transform: isOpen ? `translateY(100%)` : `translateY(0%)`,
+  });
 
-    const modalRef = useRef(null);
+  const modalRef = useRef(null);
 
-    useEffect(() => {
-      function keyListener(e) {
-        if (e.keyCode === 27 || e.keyCode === 13) {
-          closeModal();
-        }
+  const { countryName, countryData } = useSelector(
+    selectorGetCurrentCountryData,
+    shallowEqual
+  );
+
+  useEffect(() => {
+    function keyListener(e) {
+      if (e.keyCode === 27 || e.keyCode === 13) {
+        closeModal();
       }
+    }
+    document.addEventListener("keydown", keyListener);
 
-      document.addEventListener("keydown", keyListener);
+    return () => document.removeEventListener("keydown", keyListener);
+  }, [closeModal]);
 
-      return () => document.removeEventListener("keydown", keyListener);
-    }, [closeModal]);
+  useOnClickOutside(modalRef, closeModal);
 
-    useOnClickOutside(modalRef, closeModal);
-
-    return (
-      <When condition={isOpen}>
-        <Portal>
-          <Overlay>
-            <animated.div style={animation}>
-              <ModalWrapper ref={modalRef}>
-                <ModalHeader>
-                  <Title>{title}</Title>
-                </ModalHeader>
-                <Content>
-                  <Row>
-                    <Image src={matchIcons()}></Image>
-                    <TotalText>Total Confirmed</TotalText>
-                    <QuantityText>47934</QuantityText>
+  return (
+    <When condition={isOpen}>
+      <Portal>
+        <Overlay>
+          <animated.div style={animation}>
+            <ModalWrapper ref={modalRef}>
+              <ModalHeader>
+                <Title>{countryName}</Title>
+              </ModalHeader>
+              <Content>
+                {Object.keys(countryData).map((item) => (
+                  <Row key={item}>
+                    <Image src={matchRowData(item).icon}></Image>
+                    <TotalText>{matchRowData(item).text}</TotalText>
+                    <QuantityText>{countryData[item]}</QuantityText>
                   </Row>
-                  <Row>
-                    <Image src={matchIcons()}></Image>
-                    <TotalText>Total Confirmed</TotalText>
-                    <QuantityText>47934</QuantityText>
-                  </Row>
-                  <Row>
-                    <Image src={matchIcons()}></Image>
-                    <TotalText>Total Confirmed</TotalText>
-                    <QuantityText>47934</QuantityText>
-                  </Row>
-                </Content>
+                ))}
+              </Content>
+              <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button onClick={() => closeModal()}>ok</Button>
-              </ModalWrapper>
-            </animated.div>
-          </Overlay>
-        </Portal>
-      </When>
-    );
-  }
-);
+              </div>
+            </ModalWrapper>
+          </animated.div>
+        </Overlay>
+      </Portal>
+    </When>
+  );
+});

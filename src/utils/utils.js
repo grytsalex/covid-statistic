@@ -20,12 +20,12 @@ export const columnSort = (a, b, sortDirection) => {
   return 0;
 };
 
-export const matchIcons = (key) => {
-  const icons = {
-    TotalConfirmed: Confirmed,
-    TotalDeath: Death,
-    TotalRecovered: Recovered,
+export const matchRowData = (key) => {
+  const data = {
+    totalConfirmed: { icon: Confirmed, text: "Total Confirmed" },
+    totalDeaths: { icon: Death, text: "Total Death" },
+    totalRecovered: { icon: Recovered, text: "Total Recovered" },
   };
 
-  return icons[key];
+  return data[key];
 };

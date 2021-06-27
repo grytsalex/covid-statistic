@@ -2,12 +2,14 @@ import {
   SET_IS_LOADING,
   SET_COUNTRIES_REQUEST,
   SET_MODAL_IS_OPEN,
+  SET_CURRENT_COUNTRY,
 } from "../consts";
 
 export const initialState = {
   isLoading: false,
   countries: [],
   isOpen: false,
+  currentCountry: "",
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -21,6 +23,9 @@ export const rootReducer = (state = initialState, action) => {
 
     case SET_MODAL_IS_OPEN:
       return setModalIsOpen(state, payload);
+
+    case SET_CURRENT_COUNTRY:
+      return setCurrentCountry(state, payload);
 
     default:
       return state;
@@ -45,5 +50,12 @@ function setModalIsOpen(state, payload) {
   return {
     ...state,
     isOpen: payload,
+  };
+}
+
+function setCurrentCountry(state, payload) {
+  return {
+    ...state,
+    currentCountry: payload,
   };
 }

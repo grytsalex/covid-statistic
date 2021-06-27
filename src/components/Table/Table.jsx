@@ -64,7 +64,7 @@ export const Table = memo(({ countries, openModal }) => {
               countryName={Country}
               totalConfirmed={TotalConfirmed}
               key={ID}
-              openModal={openModal}
+              openModal={() => openModal(Country)}
             />
           ))}
         </CustomScrollbars>

@@ -11,7 +11,11 @@ import {
   selectorGetIsLoading,
   selectorGetModalIsOpen,
 } from "./selectors";
-import { actionGetCountriesRequest, actionSetModalIsOpen } from "./actions";
+import {
+  actionGetCountriesRequest,
+  actionSetCurrentCountry,
+  actionSetModalIsOpen,
+} from "./actions";
 import { filterCountries } from "./utils";
 
 function App() {
@@ -32,9 +36,13 @@ function App() {
     shallowEqual
   );
 
-  const handleOpenModal = useCallback(() => {
-    dispatch(actionSetModalIsOpen(true));
-  }, [dispatch]);
+  const handleOpenModal = useCallback(
+    (country) => {
+      dispatch(actionSetModalIsOpen(true));
+      dispatch(actionSetCurrentCountry(country));
+    },
+    [dispatch]
+  );
 
   const closeModal = useCallback(() => {
     dispatch(actionSetModalIsOpen(false));

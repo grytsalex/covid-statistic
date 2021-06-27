@@ -3,6 +3,7 @@ import {
   GET_COUNTRIES_REQUEST,
   SET_COUNTRIES_REQUEST,
   SET_MODAL_IS_OPEN,
+  SET_CURRENT_COUNTRY,
 } from "./consts";
 
 export const actionSetIsLoading = (payload) => ({
@@ -21,5 +22,10 @@ export const actionSetCountriesRequest = (payload) => ({
 
 export const actionSetModalIsOpen = (payload) => ({
   type: SET_MODAL_IS_OPEN,
+  payload,
+});
+
+export const actionSetCurrentCountry = (payload) => ({
+  type: SET_CURRENT_COUNTRY,
   payload,
 });

@@ -17,3 +17,19 @@ export const selectorGetModalIsOpen = createSelector(
   selectorGetAppState,
   (state) => state.isOpen
 );
+
+export const selectorGetCurrentCountryData = createSelector(
+  selectorGetCountries,
+  selectorGetAppState,
+  (countries, { currentCountry }) => {
+    const temp = countries?.find((item) => item?.Country === currentCountry);
+    return {
+      countryName: temp?.Country,
+      countryData: {
+        totalConfirmed: temp?.TotalConfirmed,
+        totalDeaths: temp?.TotalDeaths,
+        totalRecovered: temp?.TotalRecovered,
+      },
+    };
+  }
+);
