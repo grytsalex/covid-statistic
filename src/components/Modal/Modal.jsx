@@ -2,6 +2,7 @@ import React, { memo, useEffect, useRef } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import { When } from "react-if";
 import { useSpring, animated } from "react-spring";
+import PropTypes from "prop-types";
 
 import {
   ModalWrapper,
@@ -60,7 +61,7 @@ export const Modal = memo(({ isOpen, closeModal }) => {
               <Content>
                 {Object.keys(countryData).map((item) => (
                   <Row key={item}>
-                    <Image src={matchRowData(item).icon}></Image>
+                    <Image src={matchRowData(item).icon} />
                     <TotalText>{matchRowData(item).text}</TotalText>
                     <QuantityText>{countryData[item]}</QuantityText>
                   </Row>
@@ -76,3 +77,8 @@ export const Modal = memo(({ isOpen, closeModal }) => {
     </When>
   );
 });
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  closeModal: PropTypes.func,
+};

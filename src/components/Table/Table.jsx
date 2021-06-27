@@ -2,6 +2,7 @@ import React, { memo, useCallback, useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 import { When } from "react-if";
 import { Scrollbars } from "react-custom-scrollbars";
+import { PropTypes } from "prop-types";
 
 import { Row } from "./Row";
 import { tableHeaderCells } from "../../consts";
@@ -71,3 +72,8 @@ export const Table = memo(({ countries, openModal }) => {
     </TableWrapper>
   );
 });
+
+Table.propTypes = {
+  country: PropTypes.arrayOf(PropTypes.object).isRequired,
+  openModal: PropTypes.func.isRequired,
+};

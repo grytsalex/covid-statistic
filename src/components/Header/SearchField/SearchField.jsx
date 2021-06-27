@@ -5,6 +5,8 @@ import {
   SearchInput,
 } from "./styledComponent";
 import img from "../../../assets/search.svg";
+import PropTypes from "prop-types";
+import { Header } from "../Header";
 
 export const SearchField = memo(({ onChange }) => {
   const inputRef = useRef(null);
@@ -25,3 +27,7 @@ export const SearchField = memo(({ onChange }) => {
     </SearchFieldWrapper>
   );
 });
+
+SearchField.propTypes = {
+  onChange: PropTypes.func,
+};

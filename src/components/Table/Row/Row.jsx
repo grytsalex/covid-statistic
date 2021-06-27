@@ -1,4 +1,6 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
+
 import { TableRow } from "./styledComponent";
 import { RowItem } from "./RowItem";
 
@@ -23,3 +25,10 @@ export const Row = memo(
     );
   }
 );
+
+Row.propTypes = {
+  tableData: PropTypes.object.isRequired,
+  tableHeader: PropTypes.bool,
+  openModal: PropTypes.func,
+  sortData: PropTypes.func,
+};
