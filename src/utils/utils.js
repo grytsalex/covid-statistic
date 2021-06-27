@@ -3,7 +3,9 @@ import Confirmed from "../assets/confirmed.svg";
 import Death from "../assets/deaths.svg";
 
 export const filterCountries = (countries = [], str) => {
-  return countries?.filter((item) => item?.Country.toLowerCase().includes(str));
+  return countries?.filter((item) =>
+    item?.Country.toLowerCase().startsWith(str)
+  );
 };
 
 export const columnSort = (a, b, sortDirection) => {
