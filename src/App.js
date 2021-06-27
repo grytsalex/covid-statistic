@@ -40,43 +40,24 @@ function App() {
     dispatch(actionSetModalIsOpen(false));
   }, [dispatch]);
 
-  const handleKeyDownClose = useCallback(
-    (event) => {
-      if (
-        event.key === "Esc" ||
-        event.key === "Escape" ||
-        event.key === "Enter"
-      ) {
-        closeModal();
-      }
-    },
-    [closeModal]
-  );
-
   const handleOnChange = useCallback((e) => {
     setSearchTerm(e.target.value.toLowerCase());
   }, []);
 
   const filteredCountries = filterCountries(countries, searchTerm);
 
-  console.log(searchTerm);
-
   return (
     <div className="App">
-      <Header onChange={handleOnChange} />
       <If condition={isLoading}>
         <Then>
           <Loader />
         </Then>
         <Else>
+          <Header onChange={handleOnChange} />
           <Table countries={filteredCountries} openModal={handleOpenModal} />
         </Else>
       </If>
-      <Modal
-        isOpen={!isOpen}
-        handleKeyDownClose={handleKeyDownClose}
-        closeModal={closeModal}
-      />
+      <Modal isOpen={isOpen} closeModal={closeModal} />
     </div>
   );
 }

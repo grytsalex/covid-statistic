@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { prop } from "styled-tools";
 
-export const ModalButton = styled.div`
+export const Button = styled.div`
   width: 171px;
   height: 49px;
   background-color: #2196f3;
@@ -15,25 +15,25 @@ export const ModalWrapper = styled.div`
   height: 400px;
   background-color: #ffffff;
   border-radius: 20px;
-  position: absolute;
-  z-index: 10000;
+  position: relative;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  border: 2px solid black;
-
-  /* */
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 `;
 
-export const ModalStatisticBlock = styled.div`
+export const Content = styled.div`
+  display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 36px 20px;
 `;
 
-export const ModalRow = styled.div`
+export const Row = styled.div`
   width: 100%;
 `;
 
@@ -43,14 +43,14 @@ export const ModalHeader = styled.div`
   width: 100%;
 `;
 
-export const ModalTitle = styled.h1`
+export const Title = styled.h1`
   font-weight: bold;
   font-size: 48px;
   line-height: 56px;
   color: ${prop("fontColor", "#000000")};
 `;
 
-export const ModalRowImage = styled.img``;
+export const Image = styled.img``;
 
 export const TotalText = styled.span`
   font-size: 24px;
@@ -59,3 +59,13 @@ export const TotalText = styled.span`
 `;
 
 export const QuantityText = styled(TotalText)``;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+`;
