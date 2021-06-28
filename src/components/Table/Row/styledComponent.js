@@ -11,6 +11,13 @@ export const TableRow = styled.div`
   align-items: center;
   cursor: pointer;
 
+  &:hover {
+    box-shadow: ${ifProp(
+      "withHover",
+      "inset 0 0 0 4px #2196f3, 0 0 1px rgba(0, 0, 0, 0)"
+    )};
+  }
+
   ${ifProp(
     "tableHead",
     css`

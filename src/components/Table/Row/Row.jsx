@@ -10,9 +10,14 @@ export const Row = memo(
     openModal = () => {},
     sortData = () => {},
     tableData = {},
+    withHover = true,
   }) => {
     return (
-      <TableRow tableHead={tableHead} onClick={() => openModal()}>
+      <TableRow
+        tableHead={tableHead}
+        withHover={withHover}
+        onClick={() => openModal()}
+      >
         {/*<If condition={tableHead}*/}
         {Object.values(tableData).map(({ text, isSorted }, index) => (
           <RowItem

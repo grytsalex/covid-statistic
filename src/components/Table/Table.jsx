@@ -42,7 +42,12 @@ export const Table = memo(({ countries, openModal }) => {
 
   return (
     <TableWrapper>
-      <Row tableData={tableHeaderCells} sortData={handleSortData} tableHead />
+      <Row
+        tableData={tableHeaderCells}
+        sortData={handleSortData}
+        tableHead
+        withHover={false}
+      />
       <When condition={!isEmpty(countries)}>
         <CustomScrollbars
           autoHide

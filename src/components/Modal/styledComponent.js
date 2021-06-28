@@ -60,6 +60,9 @@ export const Title = styled.span`
   line-height: 56px;
   color: ${prop("fontColor", "#000000")};
   padding-top: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Image = styled.img`
