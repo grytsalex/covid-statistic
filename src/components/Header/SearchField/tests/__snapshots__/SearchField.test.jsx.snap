@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchField should match snapshot 1`] = `
+<div
+  className="sc-bdnxRM ijPzvk"
+>
+  <input
+    className="sc-gtsrHT byYwJJ"
+    name="search"
+    onChange={[MockFunction]}
+    placeholder="search..."
+    type="text"
+  />
+  <button
+    className="sc-dlnjwi kEDfwq"
+    onClick={[Function]}
+  />
+</div>
+`;
