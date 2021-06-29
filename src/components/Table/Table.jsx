@@ -79,6 +79,6 @@ export const Table = memo(({ countries, openModal }) => {
 });
 
 Table.propTypes = {
-  country: PropTypes.arrayOf(PropTypes.object).isRequired,
+  countries: PropTypes.arrayOf(PropTypes.object),
   openModal: PropTypes.func.isRequired,
 };

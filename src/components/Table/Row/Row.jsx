@@ -36,4 +36,5 @@ Row.propTypes = {
   tableHeader: PropTypes.bool,
   openModal: PropTypes.func,
   sortData: PropTypes.func,
+  withHover: PropTypes.bool,
 };

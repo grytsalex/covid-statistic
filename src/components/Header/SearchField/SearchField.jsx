@@ -1,12 +1,12 @@
 import React, { useRef, memo } from "react";
+import PropTypes from "prop-types";
+
 import {
   SearchButton,
   SearchFieldWrapper,
   SearchInput,
 } from "./styledComponent";
 import img from "../../../assets/search.svg";
-import PropTypes from "prop-types";
-import { Header } from "../Header";
 
 export const SearchField = memo(({ onChange }) => {
   const inputRef = useRef(null);

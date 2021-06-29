@@ -22,7 +22,7 @@ export const selectorGetCurrentCountryData = createSelector(
   selectorGetCountries,
   selectorGetAppState,
   (countries, { currentCountry }) => {
-    const temp = countries?.find((item) => item?.Country === currentCountry);
+    const temp = countries.find((item) => item?.Country === currentCountry);
     return {
       countryName: temp?.Country,
       countryData: {
