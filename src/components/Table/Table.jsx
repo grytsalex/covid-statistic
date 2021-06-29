@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 import { When } from "react-if";
 import { Scrollbars } from "react-custom-scrollbars";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 import { Row } from "./Row";
 import { tableHeaderCells } from "../../consts";
@@ -47,6 +47,7 @@ export const Table = memo(({ countries, openModal }) => {
         sortData={handleSortData}
         tableHead
         withHover={false}
+        borderLeft="1px solid white"
       />
       <When condition={!isEmpty(countries)}>
         <CustomScrollbars

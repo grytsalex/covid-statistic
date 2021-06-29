@@ -11,6 +11,7 @@ export const Row = memo(
     sortData = () => {},
     tableData = {},
     withHover = true,
+    borderLeft,
   }) => {
     return (
       <TableRow
@@ -18,12 +19,12 @@ export const Row = memo(
         withHover={withHover}
         onClick={() => openModal()}
       >
-        {/*<If condition={tableHead}*/}
         {Object.values(tableData).map(({ text, isSorted }, index) => (
           <RowItem
             text={text}
             key={index}
             sortData={isSorted ? sortData : undefined}
+            borderLeft={borderLeft}
           />
         ))}
       </TableRow>
@@ -37,4 +38,5 @@ Row.propTypes = {
   openModal: PropTypes.func,
   sortData: PropTypes.func,
   withHover: PropTypes.bool,
+  borderLeft: PropTypes.string,
 };
