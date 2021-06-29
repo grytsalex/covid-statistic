@@ -22,7 +22,7 @@ export const selectorGetCurrentCountryData = createSelector(
   selectorGetCountries,
   selectorGetAppState,
   (countries, { currentCountry }) => {
-    const temp = countries.find((item) => item?.Country === currentCountry);
+    const temp = countries?.find((item) => item?.Country === currentCountry);
     return {
       countryName: temp?.Country,
       countryData: {
@@ -32,4 +32,9 @@ export const selectorGetCurrentCountryData = createSelector(
       },
     };
   }
+);
+
+export const selectorGetErrorMessage = createSelector(
+  selectorGetAppState,
+  (state) => state.errorMessage
 );

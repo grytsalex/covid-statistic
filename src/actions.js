@@ -4,6 +4,7 @@ import {
   SET_COUNTRIES_REQUEST,
   SET_MODAL_IS_OPEN,
   SET_CURRENT_COUNTRY,
+  SET_ERROR_MESSAGE,
 } from "./consts";
 
 export const actionSetIsLoading = (payload) => ({
@@ -27,5 +28,10 @@ export const actionSetModalIsOpen = (payload) => ({
 
 export const actionSetCurrentCountry = (payload) => ({
   type: SET_CURRENT_COUNTRY,
+  payload,
+});
+
+export const actionSetErrorMessage = (payload) => ({
+  type: SET_ERROR_MESSAGE,
   payload,
 });

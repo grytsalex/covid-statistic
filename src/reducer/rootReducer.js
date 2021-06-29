@@ -3,6 +3,7 @@ import {
   SET_COUNTRIES_REQUEST,
   SET_MODAL_IS_OPEN,
   SET_CURRENT_COUNTRY,
+  SET_ERROR_MESSAGE,
 } from "../consts";
 
 export const initialState = {
@@ -10,6 +11,7 @@ export const initialState = {
   countries: [],
   isOpen: false,
   currentCountry: "",
+  errorMessage: "",
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -26,6 +28,9 @@ export const rootReducer = (state = initialState, action) => {
 
     case SET_CURRENT_COUNTRY:
       return setCurrentCountry(state, payload);
+
+    case SET_ERROR_MESSAGE:
+      return setErrorMessage(state, payload);
 
     default:
       return state;
@@ -57,5 +62,12 @@ function setCurrentCountry(state, payload) {
   return {
     ...state,
     currentCountry: payload,
+  };
+}
+
+function setErrorMessage(state, payload) {
+  return {
+    ...state,
+    errorMessage: payload,
   };
 }

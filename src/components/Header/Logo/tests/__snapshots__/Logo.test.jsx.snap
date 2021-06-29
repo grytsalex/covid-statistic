@@ -1,17 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Logo should match snapshot 1`] = `
-<div
-  className="sc-dlnjwi dNVBYq"
->
-  <img
-    className="sc-bdnxRM cKwECw"
-    src="logo.jpg"
+<styled.div>
+  <styled.img
+    src="test-file-stub"
   />
-  <h1
-    className="sc-gtsrHT bICckE"
-  >
+  <styled.h1>
     statistic
-  </h1>
-</div>
+  </styled.h1>
+</styled.div>
 `;

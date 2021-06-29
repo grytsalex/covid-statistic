@@ -1,11 +1,20 @@
 import React from "react";
-import { create } from "react-test-renderer";
+import { shallow, mount } from "enzyme";
 import { Logo } from "../Logo";
+import { LogoWrapper, LogoImage } from "../styledComponent";
 
 describe("Logo", () => {
   it("should match snapshot", () => {
-    const component = create(<Logo />).toJSON();
+    expect(shallow(<Logo />)).toMatchSnapshot();
+  });
 
-    expect(component).toMatchSnapshot();
+  it("should contain jpg icon", () => {
+    const wrapper = mount(
+      <LogoWrapper>
+        <LogoImage />
+      </LogoWrapper>
+    );
+
+    expect(wrapper.find("svg")).toBeDefined();
   });
 });

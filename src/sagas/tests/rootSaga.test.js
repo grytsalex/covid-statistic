@@ -1,8 +1,13 @@
 import { testSaga } from "redux-saga-test-plan";
 import { handleGetCountriesRequest, watchRootSaga } from "../rootSaga";
 import { GET_COUNTRIES_REQUEST } from "../../consts";
-import { actionSetCountriesRequest, actionSetIsLoading } from "../../actions";
+import {
+  actionSetCountriesRequest,
+  actionSetErrorMessage,
+  actionSetIsLoading,
+} from "../../actions";
 import { httpGet } from "../../utils";
+import { put } from "redux-saga/effects";
 
 jest.mock("../../utils", () => ({
   httpGet: jest.fn(() => ({
@@ -20,39 +25,44 @@ describe("test saga", () => {
       .isDone();
   });
 
-  // describe("handleGetCountriesRequest", () => {
-  //   const Countries = [{ Country: "Ukraine" }];
-  //   const url = "https://api.covid19api.com/summary";
-  //
-  //   it("should handle request", () => {
-  //     testSaga(handleGetCountriesRequest)
-  //       .next()
-  //       .put(actionSetIsLoading(true))
-  //       .next()
-  //       .inspect(() => {
-  //         // eslint-disable-next-line jest/valid-expect-in-promise
-  //         httpGet(url).then((data) => expect(data).toEqual(Countries));
-  //       })
-  //       .next({ Countries })
-  //       .put(actionSetCountriesRequest(Countries))
-  //       .next()
-  //       .put(actionSetIsLoading(false))
-  //       .next()
-  //       .isDone();
-  //   });
-  //
-  //   it("should handle request with error", () => {
-  //     const mockedError = new Error("network error");
-  //
-  //     testSaga(handleGetCountriesRequest)
-  //       .next()
-  //       .put(actionSetIsLoading(true))
-  //       .next()
-  //       .inspect(() => expect(httpGet).toBeCalledWith(url))
-  //       .throw(mockedError)
-  //       .put(actionSetIsLoading(false))
-  //       .next()
-  //       .isDone();
-  //   });
-  // });
+  describe("handleGetCountriesRequest", () => {
+    const Countries = [{ Country: "Ukraine" }];
+    const url = "https://api.covid19api.com/summary";
+
+    it("should handle request", () => {
+      testSaga(handleGetCountriesRequest)
+        .next()
+        .put(actionSetIsLoading(true))
+        .next()
+        .inspect(() =>
+          httpGet(url).then((data) => expect(data).toEqual(Countries))
+        )
+        .next({ Countries })
+        .put(actionSetCountriesRequest(Countries))
+        .next()
+        .put(actionSetErrorMessage(""))
+        .next()
+        .put(actionSetIsLoading(false))
+        .next()
+        .isDone();
+    });
+
+    it("should handle request with error", () => {
+      const mockedError = new Error("network error");
+      const error = "error";
+
+      testSaga(handleGetCountriesRequest)
+        .next()
+        .put(actionSetIsLoading(true))
+        .next()
+        .inspect(() => httpGet(url).then((data) => expect(data).toEqual(error)))
+        .throw(mockedError)
+        // .put(
+        //   actionSetErrorMessage("Sorry but service temporarily unavailable")
+        // );
+        .put(actionSetIsLoading(false))
+        .next()
+        .isDone();
+    });
+  });
 });

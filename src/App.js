@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import { createStructuredSelector } from "reselect";
 
 import "./App.css";
-import { Header, Table, Loader, Modal } from "./components";
+import { Header, Table, Loader, Modal, Alert } from "./components";
 import {
   selectorGetCountries,
   selectorGetIsLoading,
   selectorGetModalIsOpen,
+  selectorGetErrorMessage,
 } from "./selectors";
 import {
   actionGetCountriesRequest,
@@ -27,11 +28,12 @@ function App() {
     dispatch(actionGetCountriesRequest());
   }, [dispatch]);
 
-  const { isLoading, countries, isOpen } = useSelector(
+  const { isLoading, countries, isOpen, errorMessage } = useSelector(
     createStructuredSelector({
       isLoading: selectorGetIsLoading,
       countries: selectorGetCountries,
       isOpen: selectorGetModalIsOpen,
+      errorMessage: selectorGetErrorMessage,
     }),
     shallowEqual
   );
@@ -61,8 +63,18 @@ function App() {
           <Loader />
         </Then>
         <Else>
-          <Header onChange={handleOnChange} />
-          <Table countries={filteredCountries} openModal={handleOpenModal} />
+          <If condition={errorMessage}>
+            <Then>
+              <Alert message={errorMessage} />
+            </Then>
+            <Else>
+              <Header onChange={handleOnChange} />
+              <Table
+                countries={filteredCountries}
+                openModal={handleOpenModal}
+              />
+            </Else>
+          </If>
         </Else>
       </If>
       <Modal isOpen={isOpen} closeModal={closeModal} />
