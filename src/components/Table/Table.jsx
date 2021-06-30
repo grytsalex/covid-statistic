@@ -41,7 +41,7 @@ export const Table = memo(({ countries, openModal }) => {
   }, [countries]);
 
   return (
-    <TableWrapper>
+    <TableWrapper className={"table-wrapper"}>
       <Row
         tableData={tableHeaderCells}
         sortData={handleSortData}

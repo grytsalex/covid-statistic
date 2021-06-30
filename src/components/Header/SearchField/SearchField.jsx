@@ -15,13 +15,14 @@ export const SearchField = memo(({ onChange }) => {
   };
 
   return (
-    <SearchFieldWrapper>
+    <SearchFieldWrapper className={"input-wrapper"}>
       <SearchInput
         name="search"
         placeholder="search..."
         type="text"
         ref={inputRef}
         onChange={onChange}
+        className={"input"}
       />
       <SearchButton icon={img} onClick={onInputFocus} />
     </SearchFieldWrapper>

@@ -4,9 +4,9 @@ import img from "../../../assets/logo.jpg";
 
 export const Logo = () => {
   return (
-    <LogoWrapper>
+    <LogoWrapper className={"logo-wrapper"}>
       <LogoImage src={img} />
-      <LogoTitle>statistic</LogoTitle>
+      <LogoTitle className={"logo-title"}>statistic</LogoTitle>
     </LogoWrapper>
   );
 };

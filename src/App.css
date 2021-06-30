@@ -2,3 +2,36 @@
     height: 100vh;
     overflow: hidden;
 }
+
+@media (max-width: 768px) {
+    .table-wrapper {
+        margin: 0 !important;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .logo-wrapper{
+        margin: 0 !important;
+    }
+
+    .logo-title {
+        font-size: 28px !important;
+    }
+
+    .input {
+        min-width: 100% !important;
+        font-size: 28px !important;
+        padding-left: 5px !important;
+    }
+
+    .input-wrapper {
+        margin: 0 0 15px 0 !important;
+    }
+
+    .table-text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

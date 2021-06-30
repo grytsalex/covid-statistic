@@ -5,7 +5,10 @@ import PropTypes from "prop-types";
 export const RowItem = memo(({ text, sortData = () => {}, borderLeft }) => {
   return (
     <TableRowItem borderLeft={borderLeft}>
-      <TableText onClick={() => sortData(text.toString().replace(/ /g, ""))}>
+      <TableText
+        className={"table-text"}
+        onClick={() => sortData(text.toString().replace(/ /g, ""))}
+      >
         {text}
       </TableText>
     </TableRowItem>

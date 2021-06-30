@@ -7,7 +7,7 @@ import { HeaderWrapper } from "./styledComponent";
 
 export const Header = memo(({ onChange }) => {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper className={"header"}>
       <Logo />
       <SearchField onChange={onChange} />
     </HeaderWrapper>
