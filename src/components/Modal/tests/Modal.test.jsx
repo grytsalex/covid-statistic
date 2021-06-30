@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "../Modal";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
 
@@ -13,8 +13,9 @@ describe("Modal", () => {
   const initialState = {
     isLoading: false,
     countries: [],
-    isOpen: false,
+    isOpen: true,
     currentCountry: "",
+    errorMessage: "",
   };
 
   const mockStore = configureStore();
@@ -23,7 +24,7 @@ describe("Modal", () => {
   it("should match snapshot", () => {
     store = mockStore(initialState);
     expect(
-      shallow(
+      mount(
         <Provider store={store}>
           <Modal {...commonProps} />
         </Provider>

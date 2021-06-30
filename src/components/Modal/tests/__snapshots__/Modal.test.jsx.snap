@@ -1,40 +1,267 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal should match snapshot 1`] = `
-<ContextProvider
-  value={
+<Provider
+  store={
     Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": null,
-      },
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
   <Memo()
     closeModal={[MockFunction]}
     isOpen={true}
-  />
-</ContextProvider>
+  >
+    <When
+      condition={true}
+    >
+      <Portal>
+        <Portal
+          containerInfo={
+            <div
+              class="root-portal"
+            >
+              <div
+                class="sc-pNWdM fdKaSz"
+              >
+                <div
+                  style="opacity: 1; transform: translateY(100%);"
+                >
+                  <div
+                    class="sc-gtsrHT cehwaV"
+                  >
+                    <div
+                      class="sc-eCApnc jLFkeR"
+                    >
+                      <span
+                        class="sc-jSFjdj PWoPu"
+                      />
+                    </div>
+                    <div
+                      class="sc-dlnjwi dfnsGC"
+                    >
+                      <div
+                        class="sc-hKFxyN epuXsJ"
+                      >
+                        <img
+                          class="sc-gKAaRy cORIVr"
+                          src="test-file-stub"
+                        />
+                        <span
+                          class="sc-iCoGMd NrFBl"
+                        >
+                          Total Confirmed
+                        </span>
+                        <span
+                          class="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                        />
+                      </div>
+                      <div
+                        class="sc-hKFxyN epuXsJ"
+                      >
+                        <img
+                          class="sc-gKAaRy cORIVr"
+                          src="test-file-stub"
+                        />
+                        <span
+                          class="sc-iCoGMd NrFBl"
+                        >
+                          Total Death
+                        </span>
+                        <span
+                          class="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                        />
+                      </div>
+                      <div
+                        class="sc-hKFxyN epuXsJ"
+                      >
+                        <img
+                          class="sc-gKAaRy cORIVr"
+                          src="test-file-stub"
+                        />
+                        <span
+                          class="sc-iCoGMd NrFBl"
+                        >
+                          Total Recovered
+                        </span>
+                        <span
+                          class="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      style="display: flex; justify-content: center;"
+                    >
+                      <div
+                        class="sc-bdnxRM dzASOx"
+                      >
+                        ok
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        >
+          <styled.div>
+            <div
+              className="sc-pNWdM fdKaSz"
+            >
+              <Animated(div)
+                style={
+                  Object {
+                    "opacity": 1,
+                    "transform": "translateY(100%)",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "opacity": 1,
+                      "transform": " translateY(100%)",
+                    }
+                  }
+                >
+                  <styled.div>
+                    <div
+                      className="sc-gtsrHT cehwaV"
+                    >
+                      <styled.div>
+                        <div
+                          className="sc-eCApnc jLFkeR"
+                        >
+                          <styled.span>
+                            <span
+                              className="sc-jSFjdj PWoPu"
+                            />
+                          </styled.span>
+                        </div>
+                      </styled.div>
+                      <styled.div>
+                        <div
+                          className="sc-dlnjwi dfnsGC"
+                        >
+                          <styled.div
+                            key="totalConfirmed"
+                          >
+                            <div
+                              className="sc-hKFxyN epuXsJ"
+                            >
+                              <styled.img
+                                src="test-file-stub"
+                              >
+                                <img
+                                  className="sc-gKAaRy cORIVr"
+                                  src="test-file-stub"
+                                />
+                              </styled.img>
+                              <styled.span>
+                                <span
+                                  className="sc-iCoGMd NrFBl"
+                                >
+                                  Total Confirmed
+                                </span>
+                              </styled.span>
+                              <Styled(styled.span)>
+                                <span
+                                  className="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                                />
+                              </Styled(styled.span)>
+                            </div>
+                          </styled.div>
+                          <styled.div
+                            key="totalDeaths"
+                          >
+                            <div
+                              className="sc-hKFxyN epuXsJ"
+                            >
+                              <styled.img
+                                src="test-file-stub"
+                              >
+                                <img
+                                  className="sc-gKAaRy cORIVr"
+                                  src="test-file-stub"
+                                />
+                              </styled.img>
+                              <styled.span>
+                                <span
+                                  className="sc-iCoGMd NrFBl"
+                                >
+                                  Total Death
+                                </span>
+                              </styled.span>
+                              <Styled(styled.span)>
+                                <span
+                                  className="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                                />
+                              </Styled(styled.span)>
+                            </div>
+                          </styled.div>
+                          <styled.div
+                            key="totalRecovered"
+                          >
+                            <div
+                              className="sc-hKFxyN epuXsJ"
+                            >
+                              <styled.img
+                                src="test-file-stub"
+                              >
+                                <img
+                                  className="sc-gKAaRy cORIVr"
+                                  src="test-file-stub"
+                                />
+                              </styled.img>
+                              <styled.span>
+                                <span
+                                  className="sc-iCoGMd NrFBl"
+                                >
+                                  Total Recovered
+                                </span>
+                              </styled.span>
+                              <Styled(styled.span)>
+                                <span
+                                  className="sc-iCoGMd sc-fujyAs NrFBl cCyEXv"
+                                />
+                              </Styled(styled.span)>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                      <div
+                        style={
+                          Object {
+                            "display": "flex",
+                            "justifyContent": "center",
+                          }
+                        }
+                      >
+                        <styled.div
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="sc-bdnxRM dzASOx"
+                            onClick={[Function]}
+                          >
+                            ok
+                          </div>
+                        </styled.div>
+                      </div>
+                    </div>
+                  </styled.div>
+                </div>
+              </Animated(div)>
+            </div>
+          </styled.div>
+        </Portal>
+      </Portal>
+    </When>
+  </Memo()>
+</Provider>
 `;
