@@ -11,6 +11,7 @@ const appState = {
   isLoading: false,
   countries: [],
   isOpen: false,
+  errorMessage: "",
   currentCountry: "",
 };
 

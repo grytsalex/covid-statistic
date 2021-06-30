@@ -7,12 +7,11 @@ import {
   actionSetIsLoading,
 } from "../../actions";
 import { httpGet } from "../../utils";
-import { put } from "redux-saga/effects";
 
 jest.mock("../../utils", () => ({
   httpGet: jest.fn(() => ({
     then: jest.fn(() => new Promise((resolve, reject) => {})),
-    catch: jest.fn(() => new Error("Get_Error")),
+    catch: jest.fn(() => Promise.reject("Error")),
   })),
 }));
 
@@ -48,18 +47,18 @@ describe("test saga", () => {
     });
 
     it("should handle request with error", () => {
-      const mockedError = new Error("network error");
-      const error = "error";
+      const error = { response: { status: 503 } };
+      const mockedError = new Error("Error");
 
       testSaga(handleGetCountriesRequest)
         .next()
         .put(actionSetIsLoading(true))
         .next()
         .inspect(() => httpGet(url).then((data) => expect(data).toEqual(error)))
-        .throw(mockedError)
-        // .put(
-        //   actionSetErrorMessage("Sorry but service temporarily unavailable")
-        // );
+        // .inspect(() => expect(httpGet).toBeCalledWith(url))
+        .throw(error)
+        .put(actionSetErrorMessage("Sorry but service temporarily unavailable"))
+        .next()
         .put(actionSetIsLoading(false))
         .next()
         .isDone();

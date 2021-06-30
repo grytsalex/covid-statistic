@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { createStructuredSelector } from "reselect";
 
 import "./App.css";
-import { Header, Table, Loader, Modal, Alert } from "./components";
+import { Header, Table, Loader, Modal, AlertComponent } from "./components";
 import {
   selectorGetCountries,
   selectorGetIsLoading,
@@ -65,7 +65,7 @@ function App() {
         <Else>
           <If condition={errorMessage}>
             <Then>
-              <Alert message={errorMessage} />
+              <AlertComponent message={errorMessage} />
             </Then>
             <Else>
               <Header onChange={handleOnChange} />

@@ -3,6 +3,8 @@ import Confirmed from "../assets/confirmed.svg";
 import Death from "../assets/deaths.svg";
 
 export const filterCountries = (countries = [], str) => {
+  if (!Array.isArray(countries) || typeof str !== "string") return [];
+
   return countries?.filter((item) =>
     item?.Country.toLowerCase().startsWith(str)
   );
@@ -21,6 +23,8 @@ export const columnSort = (a, b, sortDirection) => {
 };
 
 export const matchRowData = (key) => {
+  if (typeof key !== "string") return {};
+
   const data = {
     totalConfirmed: { icon: Confirmed, text: "Total Confirmed" },
     totalDeaths: { icon: Death, text: "Total Death" },

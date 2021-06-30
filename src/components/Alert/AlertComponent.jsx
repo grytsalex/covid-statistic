@@ -2,7 +2,7 @@ import React from "react";
 import { AlertMessage, AlertWrapper } from "./styledComponent";
 import PropTypes from "prop-types";
 
-export const Alert = ({ message }) => {
+export const AlertComponent = ({ message }) => {
   return (
     <AlertWrapper>
       <AlertMessage>{message}</AlertMessage>
@@ -10,6 +10,6 @@ export const Alert = ({ message }) => {
   );
 };
 
-Alert.propTypes = {
+AlertComponent.propTypes = {
   message: PropTypes.string,
 };

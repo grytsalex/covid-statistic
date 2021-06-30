@@ -1,1 +1,1 @@
-export { Alert } from "./Alert";
+export { AlertComponent } from "./AlertComponent";

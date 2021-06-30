@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchField } from "../SearchField";
+import { shallow } from "enzyme";
 
 describe("SearchField", () => {
   const commonProps = {
@@ -7,7 +8,7 @@ describe("SearchField", () => {
   };
 
   it("should match snapshot", () => {
-    const component = create(<SearchField {...commonProps} />).toJSON();
+    const component = shallow(<SearchField {...commonProps} />);
 
     expect(component).toMatchSnapshot();
   });

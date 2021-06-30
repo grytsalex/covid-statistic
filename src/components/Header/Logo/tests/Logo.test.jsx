@@ -15,6 +15,6 @@ describe("Logo", () => {
       </LogoWrapper>
     );
 
-    expect(wrapper.find("svg")).toBeDefined();
+    expect(wrapper.find("jpg")).toBeDefined();
   });
 });
