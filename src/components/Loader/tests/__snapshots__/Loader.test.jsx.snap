@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should match snapshot 1`] = `
+<styled.div>
+  <img
+    alt="no image"
+    src="test-file-stub"
+  />
+</styled.div>
+`;
