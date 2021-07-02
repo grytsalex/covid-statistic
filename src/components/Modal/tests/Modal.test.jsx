@@ -1,8 +1,9 @@
 import React from "react";
-import { Modal } from "../Modal";
-import { shallow, mount } from "enzyme";
-import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
+import { mount } from "enzyme";
+import configureStore from "redux-mock-store";
+
+import { Modal } from "../Modal";
 
 describe("Modal", () => {
   const commonProps = {

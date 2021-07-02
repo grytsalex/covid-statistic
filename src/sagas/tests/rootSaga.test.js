@@ -55,7 +55,6 @@ describe("test saga", () => {
         .put(actionSetIsLoading(true))
         .next()
         .inspect(() => httpGet(url).then((data) => expect(data).toEqual(error)))
-        // .inspect(() => expect(httpGet).toBeCalledWith(url))
         .throw(error)
         .put(actionSetErrorMessage("Sorry but service temporarily unavailable"))
         .next()

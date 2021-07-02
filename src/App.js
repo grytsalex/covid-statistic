@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useLayoutEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { If, Then, Else } from "react-if";
-import { useEffect } from "react";
 import { createStructuredSelector } from "reselect";
 
 import "./App.css";
@@ -24,7 +23,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(actionGetCountriesRequest());
   }, [dispatch]);
 
