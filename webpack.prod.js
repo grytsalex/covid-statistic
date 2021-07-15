@@ -20,33 +20,4 @@ module.exports = merge(common, {
       filename: "index.[hash:8].css",
     }),
   ],
-  // optimization: {
-  //   minimizer: [
-  //     new OptimizeCssAssetsPlugin({
-  //       cssProcessorOptions: {
-  //         map: {
-  //           inline: false,
-  //           annotation: true,
-  //         },
-  //       },
-  //     }),
-  //     new TerserPlugin({
-  //       terserOptions: {
-  //         parse: {
-  //           ecma: 8,
-  //         },
-  //         compress: {
-  //           ecma: 5,
-  //           inline: 2,
-  //         },
-  //         output: {
-  //           ecma: 5,
-  //           comments: false,
-  //         }
-  //       },
-  //       parallel: true,
-  //       cache: true
-  //     }),
-  //   ],
-  // },
-});
+})
