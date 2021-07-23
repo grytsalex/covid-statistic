@@ -17,5 +17,6 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "index.[hash:8].css",
     }),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
 })
