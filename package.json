@@ -48,6 +48,7 @@
     "axios": "^0.21.1",
     "file-loader": "^6.1.0",
     "lodash": "^4.17.21",
+    "netlify-cli": "^5.2.2",
     "postcss": "^8.3.5",
     "prop-types": "^15.7.2",
     "react": "16.12.0",
