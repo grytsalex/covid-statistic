@@ -1,38 +1,38 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Covid Statistic",
+      inject: true,
+      template: "./public/index.html",
+    }),
+    new CleanWebpackPlugin(),
+  ],
+  resolve: { extensions: ["*", ".js", ".jsx"] },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader"
-        }
+        loader: "babel-loader",
       },
       {
-        test: /\.(png|svg|jpg|gif)$/i,
-        loader: "file-loader",
-        options: {
-          name: "[path][name].[ext]",
-        },
+        test: /\.(svg|png|jpg|gif)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash].[ext]",
+            outputPath: "images"
+          }
+        }
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
-  output: {
-    path: path.join(__dirname, "dist/"),
-    publicPath: "/dist/",
-    filename: "bundle.js",
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "index.html",
-    }),
-  ],
 };
